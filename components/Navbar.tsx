@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
 
@@ -13,65 +14,6 @@ const NAV_LINKS = [
   { href: '/contact', label: 'Contact' },
 ];
 
-function GateLogo() {
-  return (
-    <svg
-      viewBox="0 0 100 76"
-      fill="currentColor"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-      className="w-10 h-8 flex-shrink-0"
-    >
-      {/* Left post finial */}
-      <circle cx="6" cy="8" r="5" />
-      {/* Left post */}
-      <rect x="2" y="11" width="8" height="61" rx="1.5" />
-
-      {/* Right post finial */}
-      <circle cx="94" cy="8" r="5" />
-      {/* Right post */}
-      <rect x="90" y="11" width="8" height="61" rx="1.5" />
-
-      {/* Top horizontal rail */}
-      <rect x="10" y="26" width="80" height="4" rx="1" />
-      {/* Bottom horizontal rail */}
-      <rect x="10" y="56" width="80" height="4" rx="1" />
-
-      {/* Picket 1 */}
-      <polygon points="20,16 18,26 22,26" />
-      <rect x="18" y="26" width="4" height="46" rx="1" />
-
-      {/* Picket 2 */}
-      <polygon points="32,16 30,26 34,26" />
-      <rect x="30" y="26" width="4" height="46" rx="1" />
-
-      {/* Picket 3 */}
-      <polygon points="44,16 42,26 46,26" />
-      <rect x="42" y="26" width="4" height="46" rx="1" />
-
-      {/* Picket 4 — center, slightly taller */}
-      <polygon points="50,11 48,26 52,26" />
-      <rect x="48" y="26" width="4" height="46" rx="1" />
-
-      {/* Picket 5 */}
-      <polygon points="62,16 60,26 64,26" />
-      <rect x="60" y="26" width="4" height="46" rx="1" />
-
-      {/* Picket 6 */}
-      <polygon points="74,16 72,26 76,26" />
-      <rect x="72" y="26" width="4" height="46" rx="1" />
-
-      {/* Picket 7 */}
-      <polygon points="86,16 84,26 88,26" />
-      <rect x="84" y="26" width="4" height="46" rx="1" />
-
-      {/* Small knobs on top rail at post junctions */}
-      <circle cx="14" cy="28" r="2.5" />
-      <circle cx="86" cy="28" r="2.5" />
-    </svg>
-  );
-}
-
 export default function Navbar() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -81,18 +23,15 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group" aria-label="Costa Railings LTD — Home">
-            <span className="text-[#1a1a1a] group-hover:text-[#C8373A] transition-colors">
-              <GateLogo />
-            </span>
-            <div className="leading-none">
-              <span className="block font-display font-semibold text-[17px] tracking-wide text-[#1a1a1a] group-hover:text-[#C8373A] transition-colors">
-                Costa Railings
-              </span>
-              <span className="block font-sans text-[10px] tracking-[0.18em] uppercase text-[#6b6b6b] mt-0.5">
-                Ltd. &mdash; Est. Toronto
-              </span>
-            </div>
+          <Link href="/" aria-label="Costa Railings LTD — Home">
+            <Image
+              src="/logo.jpg"
+              alt="Costa Railings Ltd."
+              width={1280}
+              height={305}
+              className="h-11 w-auto"
+              priority
+            />
           </Link>
 
           {/* Desktop nav */}

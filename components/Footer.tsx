@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { MapPin, Phone, Printer } from 'lucide-react';
 
 const NAV_LINKS = [
@@ -8,32 +9,6 @@ const NAV_LINKS = [
   { href: '/gallery', label: 'Gallery' },
   { href: '/contact', label: 'Contact' },
 ];
-
-function GateIcon() {
-  return (
-    <svg
-      viewBox="0 0 100 76"
-      fill="currentColor"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-      className="w-8 h-6 opacity-60"
-    >
-      <circle cx="6" cy="8" r="5" />
-      <rect x="2" y="11" width="8" height="61" rx="1.5" />
-      <circle cx="94" cy="8" r="5" />
-      <rect x="90" y="11" width="8" height="61" rx="1.5" />
-      <rect x="10" y="26" width="80" height="4" rx="1" />
-      <rect x="10" y="56" width="80" height="4" rx="1" />
-      <polygon points="20,16 18,26 22,26" /><rect x="18" y="26" width="4" height="46" rx="1" />
-      <polygon points="32,16 30,26 34,26" /><rect x="30" y="26" width="4" height="46" rx="1" />
-      <polygon points="44,16 42,26 46,26" /><rect x="42" y="26" width="4" height="46" rx="1" />
-      <polygon points="50,11 48,26 52,26" /><rect x="48" y="26" width="4" height="46" rx="1" />
-      <polygon points="62,16 60,26 64,26" /><rect x="60" y="26" width="4" height="46" rx="1" />
-      <polygon points="74,16 72,26 76,26" /><rect x="72" y="26" width="4" height="46" rx="1" />
-      <polygon points="86,16 84,26 88,26" /><rect x="84" y="26" width="4" height="46" rx="1" />
-    </svg>
-  );
-}
 
 export default function Footer() {
   return (
@@ -45,14 +20,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-16">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-3 mb-4">
-              <GateIcon />
-              <div>
-                <p className="font-display font-semibold text-[16px] tracking-wide text-white leading-none">
-                  Costa Railings
-                </p>
-                <p className="text-[10px] tracking-[0.16em] uppercase text-white/50 mt-0.5">Ltd.</p>
-              </div>
+            <div className="inline-flex bg-white rounded px-3 py-2 mb-4">
+              <Image
+                src="/logo.jpg"
+                alt="Costa Railings Ltd."
+                width={1280}
+                height={305}
+                className="h-10 w-auto"
+              />
             </div>
             <p className="text-white/60 text-sm leading-relaxed max-w-xs">
               Custom metal fabrication and installation serving Toronto and the GTA for over 30 years.
