@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { Check } from 'lucide-react';
 import type { GalleryPhoto } from '@/lib/gallery-data';
 
@@ -7,7 +8,6 @@ interface PhotoCardProps {
   photo: GalleryPhoto;
   isSelected?: boolean;
   onToggle?: (id: string) => void;
-  /** Compact thumbnail mode — used in contact form selected photos preview */
   compact?: boolean;
   onRemove?: (id: string) => void;
 }
@@ -16,20 +16,14 @@ export default function PhotoCard({ photo, isSelected = false, onToggle, compact
   if (compact) {
     return (
       <div className="relative flex-shrink-0 group">
-        <div
-          className="w-20 h-16 rounded-md overflow-hidden"
-          style={{ backgroundColor: photo.color }}
-          aria-hidden="true"
-        >
-          {/* Decorative grid suggesting metalwork */}
-          <svg viewBox="0 0 80 64" className="w-full h-full opacity-20">
-            {[16, 32, 48, 64].map((x) => (
-              <line key={x} x1={x} y1="0" x2={x} y2="64" stroke="white" strokeWidth="1.5" />
-            ))}
-            {[16, 32, 48].map((y) => (
-              <line key={y} x1="0" y1={y} x2="80" y2={y} stroke="white" strokeWidth="1.5" />
-            ))}
-          </svg>
+        <div className="w-20 h-16 rounded-md overflow-hidden relative">
+          <Image
+            src={photo.src}
+            alt={photo.label}
+            fill
+            className="object-cover"
+            sizes="80px"
+          />
         </div>
         <p className="mt-1 text-[10px] text-[#6b6b6b] leading-tight w-20 truncate" title={photo.label}>
           {photo.label}
@@ -57,25 +51,14 @@ export default function PhotoCard({ photo, isSelected = false, onToggle, compact
       aria-pressed={isSelected}
       aria-label={`${isSelected ? 'Deselect' : 'Select'} photo: ${photo.label}`}
     >
-      {/* Placeholder image */}
-      <div
-        className="aspect-[4/3] relative"
-        style={{ backgroundColor: photo.color }}
-      >
-        {/* Decorative metalwork pattern */}
-        <svg viewBox="0 0 160 120" className="absolute inset-0 w-full h-full opacity-[0.15]" aria-hidden="true">
-          {/* Vertical bars */}
-          {[20, 40, 60, 80, 100, 120, 140].map((x) => (
-            <rect key={x} x={x - 1} y="0" width="2.5" height="120" fill="white" />
-          ))}
-          {/* Horizontal rails */}
-          <rect x="0" y="30" width="160" height="3" fill="white" />
-          <rect x="0" y="80" width="160" height="3" fill="white" />
-          {/* Spear tips */}
-          {[20, 40, 60, 80, 100, 120, 140].map((x) => (
-            <polygon key={x} points={`${x},10 ${x - 6},30 ${x + 6},30`} fill="white" />
-          ))}
-        </svg>
+      <div className="aspect-[4/3] relative">
+        <Image
+          src={photo.src}
+          alt={photo.label}
+          fill
+          className="object-cover"
+          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+        />
 
         {/* Label overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />

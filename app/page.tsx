@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import {
   Home,
@@ -60,23 +61,17 @@ export default function HomePage() {
     <>
       {/* Hero */}
       <section className="relative overflow-hidden bg-[#1a1a1a] min-h-[580px] flex items-center">
-        {/* Background decorative metalwork pattern */}
+        {/* Background photo */}
         <div className="absolute inset-0" aria-hidden="true">
-          <svg
-            viewBox="0 0 1200 580"
-            className="absolute inset-0 w-full h-full object-cover opacity-[0.08]"
-            preserveAspectRatio="xMidYMid slice"
-          >
-            {Array.from({ length: 20 }, (_, i) => i * 60).map((x) => (
-              <g key={x}>
-                <rect x={x + 25} y="0" width="10" height="580" fill="white" />
-                <polygon points={`${x + 30},30 ${x + 18},80 ${x + 42},80`} fill="white" />
-              </g>
-            ))}
-            <rect x="0" y="80" width="1200" height="12" fill="white" />
-            <rect x="0" y="400" width="1200" height="12" fill="white" />
-          </svg>
-          <div className="absolute inset-0 bg-gradient-to-r from-[#1a1a1a] via-[#1a1a1a]/80 to-[#1a1a1a]/60" />
+          <Image
+            src="/gallery/exterior-railings/outside-railing-1.jpg"
+            alt=""
+            fill
+            priority
+            className="object-cover opacity-40"
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-black/50" />
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
