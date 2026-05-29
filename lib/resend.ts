@@ -26,7 +26,7 @@ function buildEmailHtml(data: QuoteEmailData): string {
           .map(
             (p) => `
           <td style="padding: 4px 8px 4px 0; vertical-align: top;">
-            <div style="background-color: ${p.color}; width: 100px; height: 75px; border-radius: 4px; margin-bottom: 4px;"></div>
+            <div style="background-color: #e5e4de; width: 100px; height: 75px; border-radius: 4px; margin-bottom: 4px;"></div>
             <p style="font-size: 11px; color: #555; margin: 0; width: 100px;">${p.label}</p>
             <p style="font-size: 10px; color: #888; margin: 2px 0 0; width: 100px;">${p.category}</p>
           </td>
